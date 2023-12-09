@@ -8,14 +8,19 @@ interface PalettePayload {
 
 export default function Home() {
     const [palette, setPalette] = useState<string[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
         console.log("Generating color palette!");
 
+        setIsLoading(true);
+
         const res = await fetch("/api/palette", { method: "POST" });
         const data: PalettePayload = await res.json();
         setPalette(data.palette);
+
+        setIsLoading(false);
     }
 
     return (
@@ -24,7 +29,9 @@ export default function Home() {
                 <h1>AI Color Palette Generator</h1>
                 <form action="" onSubmit={handleSubmit}>
                     <input type="text" />
-                    <button type="submit">Generate</button>
+                    <button type="submit" disabled={isLoading}>
+                        Generate
+                    </button>
                 </form>
             </div>
             <div>
