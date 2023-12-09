@@ -28,7 +28,10 @@ export default function Home() {
             <div>
                 <h1>AI Color Palette Generator</h1>
                 <form action="" onSubmit={handleSubmit}>
-                    <input type="text" />
+                    <input
+                        type="text"
+                        placeholder={`Enter a prompt (e.g., a california sunset at the beach)`}
+                    />
                     <button type="submit" disabled={isLoading}>
                         Generate
                     </button>
