@@ -1,13 +1,21 @@
 "use client";
 
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
+
+interface PalettePayload {
+    palette: string[];
+}
 
 export default function Home() {
-    function handleSubmit(event: FormEvent) {
+    const [palette, setPalette] = useState<string[]>([]);
+
+    async function handleSubmit(event: FormEvent) {
         event.preventDefault();
         console.log("Generating color palette!");
-        // TODO - Hit backend route to generate color palette
-        // TODO - Save color array in state variable to trigger re-render with colors displayed to the screen
+
+        const res = await fetch("/api/palette", { method: "POST" });
+        const data: PalettePayload = await res.json();
+        setPalette(data.palette);
     }
 
     return (
@@ -18,6 +26,13 @@ export default function Home() {
                     <input type="text" />
                     <button type="submit">Generate</button>
                 </form>
+            </div>
+            <div>
+                <ul>
+                    {palette.map((color, i) => (
+                        <li key={i}>{color}</li>
+                    ))}
+                </ul>
             </div>
         </main>
     );
