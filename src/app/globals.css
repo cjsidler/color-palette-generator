@@ -16,17 +16,16 @@
     }
 }
 
+.font-space-mono {
+    font-family: var(--font-space-mono);
+}
+
+.font-syne {
+    font-family: var(--font-syne);
+}
+
 body {
     color: rgb(var(--foreground-rgb));
     background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
         rgb(var(--background-start-rgb));
-}
-
-h1 {
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-h3 {
-    font-size: 1.2rem;
 }

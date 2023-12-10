@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Space_Mono } from "next/font/google";
+import { Space_Mono, Syne } from "next/font/google";
 import "./globals.css";
 
-const spaceMono = Space_Mono({ subsets: ["latin"], weight: "400" });
+const spaceMono = Space_Mono({ subsets: ["latin"], weight: "400", variable: "--font-space-mono" });
+const syne = Syne({ subsets: ["latin"], variable: "--font-syne" });
 
 export const metadata: Metadata = {
     title: "AI Color Palette Generator",
@@ -12,7 +13,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body className={spaceMono.className}>{children}</body>
+            <body className={`${syne.variable} ${spaceMono.variable} overflow-hidden`}>
+                {children}
+            </body>
         </html>
     );
 }

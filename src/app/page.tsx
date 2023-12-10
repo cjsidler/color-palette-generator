@@ -41,23 +41,31 @@ export default function Home() {
                             style={{ backgroundColor: color }}
                             onClick={() => console.log(`Clicked ${color}`)}
                         >
-                            <h3>{color}</h3>
+                            <h3 className="font-space-mono text-xl">{color}</h3>
                         </div>
                     ))}
                 </div>
             </div>
             <div className="absolute flex h-screen w-screen items-center justify-center pointer-events-none">
-                <span className="pointer-events-auto">
-                    <h1>AI Color Palette Generator</h1>
-                    <form action="" onSubmit={handleSubmit}>
+                <span className="w-2/3 max-w-3xl pointer-events-auto backdrop-blur-3xl drop-shadow-lg bg-white/25 rounded-xl border-solid border-white/5 border-2 p-6">
+                    <h1 className="font-syne font-semibold text-5xl tracking-tighter text-center">
+                        Color Palette Generator
+                    </h1>
+                    <form action="" onSubmit={handleSubmit} className="mt-4">
                         <div className="flex justify-between px-4">
                             <input
                                 type="text"
-                                className="flex-grow mr-4"
-                                placeholder={`Enter a prompt (e.g., a california sunset at the beach)`}
+                                className="font-syne flex-grow mr-4 pl-4 pr-2 py-2 text-gray-400"
+                                placeholder={`Enter a prompt (e.g., a california beach sunset)`}
                             />
-                            <button type="submit" disabled={isLoading}>
-                                Generate
+                            <button
+                                type="submit"
+                                disabled={isLoading}
+                                className="rounded relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 active:border-purple-600 active:shadow-none shadow-lg bg-gradient-to-tr from-purple-600 to-purple-500 border-purple-700 text-white"
+                            >
+                                <span className="relative font-syne text-lg font-bold">
+                                    {isLoading ? "Loading..." : "Generate"}
+                                </span>
                             </button>
                         </div>
                     </form>
