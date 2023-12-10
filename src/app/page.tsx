@@ -52,7 +52,7 @@ export default function Home() {
                         Color Palette Generator
                     </h1>
                     <form action="" onSubmit={handleSubmit} className="mt-4">
-                        <div className="flex justify-between px-4">
+                        <div className="flex flex-wrap justify-between px-4">
                             <input
                                 type="text"
                                 className="font-syne flex-grow mr-4 pl-4 pr-2 py-2 text-gray-400"
@@ -61,7 +61,11 @@ export default function Home() {
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                className="rounded relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 active:border-purple-600 active:shadow-none shadow-lg bg-gradient-to-tr from-purple-600 to-purple-500 border-purple-700 text-white"
+                                className={`rounded relative inline-flex group items-center justify-center w-40 px-3.5 py-2 m-1 cursor-pointer border-b-4  active:shadow-none shadow-lg bg-gradient-to-tr ${
+                                    isLoading
+                                        ? "from-gray-400  to-gray-300 border-gray-500"
+                                        : "from-lime-600  to-lime-500 border-lime-700"
+                                } text-white`}
                             >
                                 <span className="relative font-syne text-lg font-bold">
                                     {isLoading ? "Loading..." : "Generate"}
