@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useRef } from "react";
 
 interface PalettePayload {
     palette: string[];
@@ -16,17 +16,22 @@ export default function Home() {
     ]);
     const [isLoading, setIsLoading] = useState(false);
 
+    const inputRef = useRef<HTMLInputElement>(null);
+
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
-        console.log("Color palette: Generating...");
+        if (!inputRef.current) return;
+
         setIsLoading(true);
 
-        const res = await fetch("/api/palette", { method: "POST" });
+        const res = await fetch("/api/palette", {
+            method: "POST",
+            body: JSON.stringify({ prompt: inputRef.current.value }),
+        });
         const data: PalettePayload = await res.json();
         setPalette(data.palette);
 
-        console.log("Color palette: Done!");
         setIsLoading(false);
     }
 
@@ -57,6 +62,10 @@ export default function Home() {
                                 type="text"
                                 className="font-syne flex-grow mr-4 pl-4 pr-2 py-2 text-gray-400"
                                 placeholder={`Enter a prompt (e.g., a california beach sunset)`}
+                                required
+                                pattern=".*\S+.*"
+                                title="This field is required"
+                                ref={inputRef}
                             />
                             <button
                                 type="submit"
