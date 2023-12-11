@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     const openAIRes: OpenAI.Completion = await openai.completions.create({
         model: "text-davinci-003",
         prompt: gptPrompt,
-        max_tokens: 200,
+        max_tokens: 100,
     });
 
     const palette = JSON.parse(openAIRes.choices[0].text);
