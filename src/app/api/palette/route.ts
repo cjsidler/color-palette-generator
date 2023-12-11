@@ -2,7 +2,11 @@ export async function POST(request: Request) {
     const body = await request.json();
     console.log(body);
 
-    // TODO - Check body for 'prompt' key, return error if not found
+    // Check body for 'prompt' key, return error if not found
+    if (!body.prompt) {
+        return new Response("Error: Must include prompt", { status: 400 });
+    }
+
     // TODO - Create prompt for GPT
     // TODO - Send request to GPT
     // TODO - Parse GPT response into string array
