@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Space_Mono, Syne } from "next/font/google";
 import "./globals.css";
 
-const spaceMono = Space_Mono({ subsets: ["latin"], weight: "400", variable: "--font-space-mono" });
+const spaceMono = Space_Mono({ subsets: ["latin"], weight: "700", variable: "--font-space-mono" });
 const syne = Syne({ subsets: ["latin"], variable: "--font-syne" });
 
 export const metadata: Metadata = {

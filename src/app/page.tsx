@@ -46,7 +46,9 @@ export default function Home() {
                             style={{ backgroundColor: color }}
                             onClick={() => console.log(`Clicked ${color}`)}
                         >
-                            <h3 className="font-space-mono text-xl">{color}</h3>
+                            <h3 className="font-space-mono text-xl backdrop-blur-3xl drop-shadow-lg bg-white/25 rounded-xl border-solid border-white/5 border-2 p-2">
+                                {color}
+                            </h3>
                         </div>
                     ))}
                 </div>
