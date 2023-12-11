@@ -1,13 +1,16 @@
+import OpenAI from "openai";
+
+const openai = new OpenAI({ apiKey: process.env.OPEN_AI_KEY });
+
 export async function POST(request: Request) {
     const body = await request.json();
     const userPrompt = body.prompt;
     if (!userPrompt) return new Response("Error: Must include prompt", { status: 400 });
 
-    // Create prompt for GPT
-    const gptPrompt = ` You are a color palette generating assistant that responds to text prompts with color palettes.
+    const gptPrompt = `You are a color palette generating assistant that responds to text prompts with color palettes.
     Color palettes should consist of 5 colors.
     Color palettes should fit the theme, mood, or instructions in the text prompt.
-    
+
     Desired format: JSON array of hexadecimal color codes
 
     Text prompt: a california beach sunset
@@ -20,12 +23,16 @@ export async function POST(request: Request) {
     Response: ["#A32C28", "#1C090B", "#384030", "#7B8055", "#BCA875"]
 
     Text prompt: ${userPrompt}
-    Response: 
-    `;
+    Response: `;
 
-    // TODO - Send request to GPT
-    // TODO - Parse GPT response into string array
-    // TODO - Return json to frontend
+    // Send request to GPT
+    const openAIRes: OpenAI.Completion = await openai.completions.create({
+        model: "text-davinci-003",
+        prompt: gptPrompt,
+        max_tokens: 200,
+    });
 
-    return Response.json({ palette: ["#FFAEBC", "#A0E7E5", "#B4F8C8", "#FBE7C6"] });
+    const palette = JSON.parse(openAIRes.choices[0].text);
+
+    return Response.json({ palette });
 }
