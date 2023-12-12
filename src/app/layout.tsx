@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Space_Mono, Syne } from "next/font/google";
+import { JetBrains_Mono, Syne } from "next/font/google";
 import "./globals.css";
 
-const spaceMono = Space_Mono({ subsets: ["latin"], weight: "700", variable: "--font-space-mono" });
+const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" });
 const syne = Syne({ subsets: ["latin"], variable: "--font-syne" });
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body className={`${syne.variable} ${spaceMono.variable} overflow-hidden`}>
+            <body className={`${syne.variable} ${jetBrainsMono.variable} overflow-hidden`}>
                 {children}
             </body>
         </html>
