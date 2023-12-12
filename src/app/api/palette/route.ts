@@ -25,7 +25,6 @@ export async function POST(request: Request) {
     Text prompt: ${userPrompt}
     Response: `;
 
-    // Send request to GPT
     const openAIRes: OpenAI.Completion = await openai.completions.create({
         model: "text-davinci-003",
         prompt: gptPrompt,
