@@ -13,7 +13,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body className={`${syne.variable} ${jetBrainsMono.variable} overflow-hidden`}>
+            <body
+                className={`${syne.variable} ${jetBrainsMono.variable} font-sans overflow-hidden`}
+            >
                 {children}
             </body>
         </html>
