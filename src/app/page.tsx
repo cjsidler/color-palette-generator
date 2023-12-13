@@ -45,9 +45,18 @@ export default function Home() {
                         <CopyToClipboard text={color}>
                             <div
                                 key={i}
-                                className="flex grow items-end justify-center pb-6"
+                                className="flex grow items-end justify-center pb-6 cursor-pointer"
                                 style={{ backgroundColor: color }}
-                                onClick={() => toast("Copied to clipboard!")}
+                                onClick={() =>
+                                    toast("Copied to clipboard!", {
+                                        duration: 1000,
+                                        icon: "🎨",
+                                        position: "bottom-center",
+                                        style: {
+                                            borderRadius: "10px",
+                                        },
+                                    })
+                                }
                             >
                                 <h3 className="font-jetbrains-mono text-xl backdrop-blur-3xl drop-shadow-lg bg-white/25 rounded-xl border-solid border-white/5 border-2 p-2">
                                     {color}
@@ -55,7 +64,7 @@ export default function Home() {
                             </div>
                         </CopyToClipboard>
                     ))}
-                    <Toaster position="bottom-center" toastOptions={{ duration: 2000 }} />
+                    <Toaster />
                 </div>
             </div>
             <div className="absolute flex h-screen w-screen items-center justify-center pointer-events-none">
