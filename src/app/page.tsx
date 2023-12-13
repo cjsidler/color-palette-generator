@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, useState, useRef } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import Toast, { Toaster } from "react-hot-toast";
 
 interface PalettePayload {
     palette: string[];
@@ -40,16 +42,18 @@ export default function Home() {
             <div className="absolute h-screen w-screen">
                 <div className="flex h-screen w-screen">
                     {palette.map((color, i) => (
-                        <div
-                            key={i}
-                            className="flex grow items-end justify-center pb-6"
-                            style={{ backgroundColor: color }}
-                            onClick={() => console.log(`Clicked ${color}`)}
-                        >
-                            <h3 className="font-jetbrains-mono text-xl backdrop-blur-3xl drop-shadow-lg bg-white/25 rounded-xl border-solid border-white/5 border-2 p-2">
-                                {color}
-                            </h3>
-                        </div>
+                        <CopyToClipboard text={color}>
+                            <div
+                                key={i}
+                                className="flex grow items-end justify-center pb-6"
+                                style={{ backgroundColor: color }}
+                                onClick={() => console.log(`Clicked ${color}`)}
+                            >
+                                <h3 className="font-jetbrains-mono text-xl backdrop-blur-3xl drop-shadow-lg bg-white/25 rounded-xl border-solid border-white/5 border-2 p-2">
+                                    {color}
+                                </h3>
+                            </div>
+                        </CopyToClipboard>
                     ))}
                 </div>
             </div>
