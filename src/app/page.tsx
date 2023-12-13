@@ -42,10 +42,9 @@ export default function Home() {
             <div className="absolute h-screen w-screen">
                 <div className="flex h-screen w-screen">
                     {palette.map((color, i) => (
-                        <CopyToClipboard text={color}>
+                        <CopyToClipboard key={i} text={color}>
                             <div
-                                key={i}
-                                className="flex grow items-end justify-center pb-6 cursor-pointer"
+                                className="flex grow items-end justify-center pb-6 cursor-pointer transition-opacity active:opacity-80"
                                 style={{ backgroundColor: color }}
                                 onClick={() =>
                                     toast("Copied to clipboard!", {
