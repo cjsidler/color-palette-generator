@@ -2,7 +2,7 @@
 
 import { FormEvent, useState, useRef } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import Toast, { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 interface PalettePayload {
     palette: string[];
@@ -47,7 +47,7 @@ export default function Home() {
                                 key={i}
                                 className="flex grow items-end justify-center pb-6"
                                 style={{ backgroundColor: color }}
-                                onClick={() => console.log(`Clicked ${color}`)}
+                                onClick={() => toast("Copied to clipboard!")}
                             >
                                 <h3 className="font-jetbrains-mono text-xl backdrop-blur-3xl drop-shadow-lg bg-white/25 rounded-xl border-solid border-white/5 border-2 p-2">
                                     {color}
@@ -55,6 +55,7 @@ export default function Home() {
                             </div>
                         </CopyToClipboard>
                     ))}
+                    <Toaster position="bottom-center" toastOptions={{ duration: 2000 }} />
                 </div>
             </div>
             <div className="absolute flex h-screen w-screen items-center justify-center pointer-events-none">
