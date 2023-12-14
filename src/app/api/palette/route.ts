@@ -32,6 +32,7 @@ export async function POST(request: Request) {
             },
             { role: "user", content: `Text prompt: ${userPrompt}` },
         ],
+        max_tokens: 100,
     };
 
     const openAIRes: OpenAI.Chat.ChatCompletion = await openai.chat.completions.create(params);
