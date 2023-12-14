@@ -1,5 +1,4 @@
 import OpenAI from "openai";
-import { APIPromise } from "openai/core.mjs";
 
 const openai = new OpenAI({ apiKey: process.env.OPEN_AI_KEY });
 
