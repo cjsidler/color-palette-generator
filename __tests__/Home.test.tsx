@@ -9,5 +9,5 @@ beforeAll(() => {
 it("should render title on home page", () => {
     const title = "Color Palette Generator";
     const titleElem = screen.getByRole("heading", { level: 1, name: title });
-    expect(titleElem).toBeDefined();
+    expect(titleElem).toBeInTheDocument();
 });
