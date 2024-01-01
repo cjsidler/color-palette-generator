@@ -1,13 +1,25 @@
-import { render, screen } from "@testing-library/react";
-import { it, expect, beforeAll } from "vitest";
+import { render, screen } from "@testing-library/react/pure";
+import { test, expect, beforeAll, describe } from "vitest";
 import Home from "@/app/page";
 
-beforeAll(() => {
-    render(<Home />);
-});
+describe("app renders correctly", () => {
+    beforeAll(() => {
+        render(<Home />);
+    });
 
-it("should render title on home page", () => {
-    const title = "Color Palette Generator";
-    const titleElem = screen.getByRole("heading", { level: 1, name: title });
-    expect(titleElem).toBeInTheDocument();
+    test("app title renders on home page", () => {
+        const title = "Color Palette Generator";
+        const titleElem = screen.getByRole("heading", { level: 1, name: title });
+        expect(titleElem).toBeInTheDocument();
+    });
+
+    test("user input box renders on home page", () => {
+        const inputBox = screen.getByRole("textbox");
+        expect(inputBox).toBeInTheDocument();
+    });
+
+    test("generate button renders on home page", () => {
+        const generateButton = screen.getByRole("button");
+        expect(generateButton).toBeInTheDocument();
+    });
 });

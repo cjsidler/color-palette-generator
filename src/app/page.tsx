@@ -81,6 +81,7 @@ export default function Home() {
                                 pattern=".*\S+.*"
                                 title="This field is required"
                                 ref={inputRef}
+                                alt="Enter a prompt for a color palette"
                             />
                             <button
                                 type="submit"
