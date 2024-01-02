@@ -22,4 +22,7 @@ describe("app renders correctly", () => {
         const generateButton = screen.getByRole("button");
         expect(generateButton).toBeInTheDocument();
     });
+
+    // TODO - verify there are five color divs
+    // TODO - verify clicking one of the color divs copies the hex code to clipboard
 });
