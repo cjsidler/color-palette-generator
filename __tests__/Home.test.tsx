@@ -25,7 +25,7 @@ describe("app renders correctly", () => {
 
     test("verify there are five color divs", () => {
         const colorHeadings = screen.getAllByRole("heading", { level: 3 });
-        expect(colorHeadings.length).toEqual(5);
+        expect(colorHeadings).toHaveLength(5);
     });
 
     // TODO - verify clicking one of the color divs copies the hex code to clipboard
