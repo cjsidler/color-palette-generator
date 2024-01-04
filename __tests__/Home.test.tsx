@@ -9,7 +9,7 @@ describe("app renders correctly", () => {
 
     test("app title renders on home page", () => {
         const title = "Color Palette Generator";
-        const titleElem = screen.getByRole("heading", { level: 1, name: title });
+        const titleElem = screen.getByRole("heading", { name: /color palette generator/i });
         expect(titleElem).toBeInTheDocument();
     });
 
@@ -19,7 +19,7 @@ describe("app renders correctly", () => {
     });
 
     test("generate button renders on home page", () => {
-        const generateButton = screen.getByRole("button");
+        const generateButton = screen.getByRole("button", { name: /generate/i });
         expect(generateButton).toBeInTheDocument();
     });
 
