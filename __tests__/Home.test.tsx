@@ -1,9 +1,9 @@
-import { render, screen } from "@testing-library/react/pure";
-import { test, expect, beforeAll, describe } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { test, expect, beforeEach, describe } from "vitest";
 import Home from "@/app/page";
 
 describe("app renders correctly", () => {
-    beforeAll(() => {
+    beforeEach(() => {
         render(<Home />);
     });
 
