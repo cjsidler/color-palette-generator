@@ -28,11 +28,16 @@ test("verify there are five color divs", () => {
     expect(colorHeadings).toHaveLength(5);
 });
 
-// TODO - verify clicking one of the color divs copies the hex code to clipboard
 test("input box should have focus if user presses tab on first load", async () => {
     user.setup();
 
     const inputBox = screen.getByRole("textbox");
     await user.tab();
     expect(inputBox).toHaveFocus();
+});
+
+test("should copy text to clipboard", async () => {
+    user.setup();
+
+    // TODO - mock window.navigator.clipboard.write and assert it is called with div color when div clicked
 });
