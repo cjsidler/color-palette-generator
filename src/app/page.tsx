@@ -44,6 +44,7 @@ export default function Home() {
                     {palette.map((color, i) => (
                         <CopyToClipboard key={i} text={color}>
                             <div
+                                role="button"
                                 className="flex grow items-end justify-center pb-6 cursor-pointer transition-opacity active:opacity-80"
                                 style={{ backgroundColor: color }}
                                 onClick={() =>

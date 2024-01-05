@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import user from "@testing-library/user-event";
 import { test, expect, beforeEach } from "vitest";
 import Home from "@/app/page";
 
@@ -28,3 +29,10 @@ test("verify there are five color divs", () => {
 });
 
 // TODO - verify clicking one of the color divs copies the hex code to clipboard
+test("input box should have focus if user presses tab on first load", async () => {
+    user.setup();
+
+    const inputBox = screen.getByRole("textbox");
+    await user.tab();
+    expect(inputBox).toHaveFocus();
+});
