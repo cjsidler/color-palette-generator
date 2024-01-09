@@ -35,9 +35,3 @@ test("input box should have focus if user presses tab on first load", async () =
     await user.tab();
     expect(inputBox).toHaveFocus();
 });
-
-test("should copy text to clipboard", async () => {
-    user.setup();
-
-    // TODO - mock window.navigator.clipboard.write and assert it is called with div color when div clicked
-});
